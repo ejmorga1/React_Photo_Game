@@ -9,13 +9,17 @@
   text-align: left;
 }
 
-.card > .img-container {
+.img-container {
   height: 100%;
   overflow: hidden;
   text-align: center;
   background:#6CADDC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.card > .img-container > img {
+
+img {
   width: 60%
 }
 
