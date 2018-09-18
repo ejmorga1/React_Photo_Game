@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React, {
+    Component
+} from 'react';
 import './App.css';
+
 import photos from './photos.json';
+
 import Game from './components/Game';
 import Nav from './components/Nav';
 import Title from './components/Title';
@@ -23,11 +27,13 @@ class App extends Component {
     };
 
     correctGuess = (newClicked) => {
+        let newScore = this.state.score + 1;
+
         this.setState({
             photos: photos,
             clicked: newClicked,
-            score: this.state.score + 1,
-            top: this.state.top, 
+            score: newScore,
+            top: this.state.top,
         });
     };
 
@@ -47,15 +53,13 @@ class App extends Component {
     };
 
     photoClicked = id => {
-        if(this.state.clicked.find( (item) => item.id === id) !== undefined) {
+        if (this.state.clicked.find((item) => item.id === id) !== undefined) {
             this.incorrectGuess();
-            this.shuffleCards(photos);
         } else {
-            let newClicked = this.state.clicked.filter( (item) => item.id !== id);
+            let newClicked = this.state.clicked.filter((item) => item.id !== id);
             this.correctGuess(newClicked);
-            this.shuffleCards(photos);
         };
-        
+        this.shuffleCards(photos);
     };
 
     render() {
