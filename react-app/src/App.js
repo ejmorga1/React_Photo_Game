@@ -53,11 +53,13 @@ class App extends Component {
     };
 
     photoClicked = id => {
-        if (this.state.clicked.find((item) => item.id === id) !== undefined) {
+        if (this.state.clicked.find((item) => item.id === id) === undefined) {
             this.incorrectGuess();
+            // alert("wrong");
         } else {
             let newClicked = this.state.clicked.filter((item) => item.id !== id);
             this.correctGuess(newClicked);
+            // alert("right");
         };
         this.shuffleCards(photos);
     };
@@ -65,7 +67,10 @@ class App extends Component {
     render() {
         return (
             <Wrapper>
-                <Nav score = { this.state.score } top={ this.state.top }/>
+                <Nav 
+                    score={ this.state.score } 
+                    top={ this.state.top }
+                />
                 <Title/>
                 { this.state.photos.map( photo => (
                         <Game
